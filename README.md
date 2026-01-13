@@ -122,6 +122,6 @@ id,label
 ...
 ```
 ##Team members
-Mrunali Kamerikar
 
+Mrunali Kamerikar
 Riddhima Taose
