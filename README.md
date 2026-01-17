@@ -1,46 +1,66 @@
-# -Backstory-Consistency-Verification-
-Evidence-aware consistency classification of backstory claims against long-form literary narratives using lightweight retrieval and reasoning.
+# Backstory-Consistency-Verification
 
-Step 1: Environment Setup
-```
+**Evidence-aware consistency classification of backstory claims against long-form literary narratives using lightweight retrieval and reasoning.**
+
+This project verifies whether backstory claims are consistent with long-form literary texts by retrieving relevant evidence from novels and performing bounded reasoning to generate a binary consistency label.
+
+
+## Project Overview
+
+The pipeline performs the following steps:
+
+1. Extracts backstory claims from the dataset
+2. Chunks long-form literary narratives into fixed-size segments
+3. Retrieves the top-K relevant chunks for each claim
+4. Computes a bounded consistency score
+5. Converts the score into a binary label
+6. Generates a submission-ready CSV file
+
+
+## Environment Setup
+
+### Step 1: Create Virtual Environment
+
+```bash
 python -m venv venv
-
 ```
-Activate:
 
-Windows
-```
+### Activate the Environment
+
+**Windows**
+
+```bash
 venv\Scripts\activate
+```
 
-```
-Linux / macOS
-```
+**Linux / macOS**
+
+```bash
 source venv/bin/activate
-
 ```
 
-Install dependencies:
+### Install Dependencies
 
-```
+```bash
 pip install -r requirements.txt
-
 ```
 
-Step 2: Dataset Placement
 
-Ensure the following files are present:
+## Dataset Placement
 
+Ensure the following files are present and correctly named (case-sensitive):
+
+```text
 dataset/train.csv
-
 dataset/test.csv
-
 dataset/books/In search of the castaways.txt
-
 dataset/books/The Count of Monte Cristo.txt
+```
 
-Filenames are case-sensitive.
 
-Project directory
+## Project Structure
+
+```text
 hackathon-project/
 │
 ├── project/
@@ -56,72 +76,67 @@ hackathon-project/
 ├── output/
 │   └── submission_v1.csv
 │
-├──KHARAGPUR DATA SCIENCE HACKATHON Report
-│   
-│
+├── KHARAGPUR DATA SCIENCE HACKATHON Report
 ├── requirements.txt
-│
 └── README.md
-
-Step 3: Run the Pipeline
-
-Navigate to the project folder:
-
 ```
+
+
+## Running the Pipeline
+
+### Step 3: Navigate to Project Directory
+
+```bash
 cd project
-
 ```
 
-Run:
+### Run the Script
 
-```
+```bash
 python main.py
-
 ```
 
-Step 4: Expected Output
+
+## Expected Output
 
 The program will:
 
-Extract the claim (caption or content)
+* Extract backstory claims
+* Chunk the novels into fixed-size segments
+* Retrieve top-K relevant chunks
+* Compute a bounded consistency score
+* Convert the score to a binary label
+* Generate a submission file
 
-Chunk the novel into fixed-size segments
+### Example Console Output
 
-Retrieve top-K relevant chunks
-
-Compute a bounded consistency score
-
-Convert score → binary label
-
-Generate submission file
-
-Console output example:
-
-[BACKSTORY CLAIM]
-[MOCK PATHWAY] Table created successfully
-[FINAL DECISION]
-Predicted label: 1
-[SUCCESS]
-Submission file created at: output/submission_v1.csv
-
-Step 5: Submission File
-
-
-The final output file:
-
+```text
+[BACKSTORY CLAIM] [MOCK PATHWAY]
+Table created successfully
+[FINAL DECISION] Predicted label: 1
+[SUCCESS] Submission file created at: output/submission_v1.csv
 ```
+
+
+## Submission File
+
+**Output Path**
+
+```text
 output/submission_v1.csv
-
 ```
-Format:
 
-```
+**Format**
+
+```csv
 id,label
 121,1
 129,0
 ...
 ```
-##Team members
 
-Mrunali Kamerikar
-Riddhima Taose
+
+## Team Members
+
+* **Mrunali Kamerikar**
+* **Riddhima Taose**
